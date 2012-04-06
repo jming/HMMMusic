@@ -1,4 +1,6 @@
 ######################## COMPARE.PY ########################
+#                 CS51 Final Project 2012                  #
+########### Alisa Nguyen, Joy Ming, Lee Seligman ###########
 
 # Keeps track of each note combination
 # Starts with order of 2
@@ -31,5 +33,5 @@ while i < 60:
 		else:
 			count[a,b] = 1
 		x += 1
-		
+
 	i += 1

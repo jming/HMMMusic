@@ -1,39 +1,32 @@
-# This file helps to create arrays of all the notes in each midi file
+######################## ARRAY.PY #########################
+#                 CS51 Final Project 2012                 #
+########### Alisa Nguyen, Joy Ming, Lee Seligman ##########
+                                            
+# Create associative array of all pitches in each midi    #
+# This works for all files except 35.mid                  #
 
-# Initializes associative arrays for notes
+from music21 import *
 
+# Initialize associative array
 notes = {}
+
+# Appends for given file i
 def appendNote(i):
-	s = converter.parse('%i.mid' % (i))
+	
+	# Initialize array for key i
 	notes[i] = []
+	# Parse file given music21 function
+	s = converter.parse('%i.mid' % (i))
+	# Access measures for file
 	measures = s[0].measures(1,60)
+
+	# Loop through each measure
 	for measure in measures:
+		# Add each note to the array at key i
 		for note in measure.notes:
 			notes[i].append(note)
 
-pitches = {}
-def appendPitch(i):
-	s = converter.parse('%i.mid' % (i))
-	pitches[i] = []
-	measures = s[0].measures(1,60)
-	for measure in measures:
-		for note in measure.notes:
-			pitches[i].append(note.pitch)
-
-while i < 60: 
-
-	append(i)
-	i += 1
-
-	# Converts the specific midi file
-	s = converter.parse('%i.mid' % (i))
-	# Initializes notes for that index
-	notes[i] = []
-
-	measures = s[0].measures(1,60)
-
-	for measure in measures:
-		for note in measure.notes:
-			notes[i].append(note.pitch)
-
+# Loops through all 60 files
+while i < 60:
+	appendNote(i)
 	i += 1
