@@ -5,8 +5,6 @@
 # Create associative array of all pitches in each midi    #
 # This works for all files except 35.mid                  #
 
-from music21 import *
-
 # Initialize associative array
 notes = {}
 
@@ -25,6 +23,8 @@ def appendNote(i):
 		# Add each note to the array at key i
 		for note in measure.notes:
 			notes[i].append(note)
+
+i = 0
 
 # Loops through all 60 files
 while i < 60:
