@@ -30,3 +30,17 @@ i = 0
 while i < 60:
 	appendNote(i)
 	i += 1
+
+def appendNote(i):
+	notes[i] = []
+	s = converter.parse('%i.mid' % (i))
+	measures = s[0].measures(1,60)
+	for measure in measures:
+		for note in measure.notes:
+			notes[i].append(note)
+
+i = 0
+
+while i < 60:
+	appendNote(i)
+	i += 1
