@@ -1,3 +1,5 @@
+from music21 import *
+
 def array(i):
 	notes[i] = []
 	s = converter.parse('%i.mid' % (i))

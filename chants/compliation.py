@@ -3,7 +3,7 @@
 # Compilation
 # CS51 Final Project 2012
 
-from music21 import *
+# from music21 import *
 
 ################## FUNCTION DEFINITIONS ##################
 
