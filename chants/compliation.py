@@ -136,7 +136,7 @@ while i < 60:
 	i += 1
 
 # Map probabilities of note transitions for all songs
-while j < 60
+while j < 60:
 	compare(j)
 	j += 1
 
