@@ -11,6 +11,7 @@ j = 0
 
 import array
 import compare 
+import write
 
 notes = {}
 count = {}

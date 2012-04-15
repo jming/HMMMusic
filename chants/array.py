@@ -13,5 +13,5 @@ def array( i, notes ):
 	# Loop through each measure
 	for measure in measures:
 		# Add each note to the array at key i
-		for note in measure.notes:
-			notes[i].append(note)
+		for notey in measure.notes:
+			notes[i].append(notey)
