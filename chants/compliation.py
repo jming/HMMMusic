@@ -7,56 +7,56 @@
 
 ################## FUNCTION DEFINITIONS ##################
 
-# Associative array of all pitches in each midi
-# Works for all files except 35.mid (excluded)
+# # Associative array of all pitches in each midi
+# # Works for all files except 35.mid (excluded)
 
-def array(i):
+# def array(i):
 
-	# Initialize array for key i
-	notes[i] = []
-	# Parse file given using music21 function
-	s = converter.parse('%i.mid' % (i))
-	# Access measures for file
-	measures = s[0].measures(1,60)
+# 	# Initialize array for key i
+# 	notes[i] = []
+# 	# Parse file given using music21 function
+# 	s = converter.parse('%i.mid' % (i))
+# 	# Access measures for file
+# 	measures = s[0].measures(1,60)
 
-	# Loop through each measure
-	for measure in measures:
-		# Add each note to the array at key i
-		for note in measure.notes:
-			notes[i].append(note)
+# 	# Loop through each measure
+# 	for measure in measures:
+# 		# Add each note to the array at key i
+# 		for note in measure.notes:
+# 			notes[i].append(note)
 
-# Assoc array within assoc array of frequency of note combinations
-# Current implementation accounts for order of 2
-# Works for all except 32.mid (excluded)
+# # Assoc array within assoc array of frequency of note combinations
+# # Current implementation accounts for order of 2
+# # Works for all except 32.mid (excluded)
 
-def compare(j):
+# def compare(j):
 	
-	# Specific note matrix from file
-	note = notes[j]
+# 	# Specific note matrix from file
+# 	note = notes[j]
 
-	# Length of note matrix
-	length = len(note)
+# 	# Length of note matrix
+# 	length = len(note)
 
-	# Position in note matrix
-	x = 0
+# 	# Position in note matrix
+# 	x = 0
 
-	# Loop through each note in matrix
-	while x < length - 1:
+# 	# Loop through each note in matrix
+# 	while x < length - 1:
 
-		# Establish pitch names
-		a = note[x].pitch.name
-		b = note[x+1].pitch.name
+# 		# Establish pitch names
+# 		a = note[x].pitch.name
+# 		b = note[x+1].pitch.name
 
-		# Increase count of specific note pair in array
-		if a in count:
-			if b in count[a]:
-				count[a][b] = count[a][b] + 1
-			else:
-				count[a][b] = 1
-		else:
-			count[a] = {}
-			count[a][b] = 1
-		x += 1
+# 		# Increase count of specific note pair in array
+# 		if a in count:
+# 			if b in count[a]:
+# 				count[a][b] = count[a][b] + 1
+# 			else:
+# 				count[a][b] = 1
+# 		else:
+# 			count[a] = {}
+# 			count[a][b] = 1
+# 		x += 1
 
 # Determines most probable path from one note to another
 # Current implementation works for order of 2
