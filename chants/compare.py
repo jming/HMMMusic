@@ -1,17 +1,8 @@
+####################### COMPARE.PY #########################
+
 # Assoc array within assoc array of frequency of note combinations
 # Current implementation accounts for order of 2
 # Works for all except 32.mid (excluded)
-
-# countmatrix = [[0]*12]*12
-
-# n = 0
-# m = 0
-
-# count = [[0]*12]*12
-
-# for n in (0,11):
-# 	for m in (0,11):
-# 		count[n][m] = 0
 
 def compare( j, count, notes ):
 	
@@ -28,8 +19,8 @@ def compare( j, count, notes ):
 	while x < length - 1:
 
 		# Establish pitch names
-		a = notey[x].pitch.name
-		b = notey[x+1].pitch.name
+		a = notey[x].pitchClass
+		b = notey[x+1].pitchClass
 
 		# Increase count of specific note pair in array
 		if a in count:
@@ -49,17 +40,28 @@ def compare( j, count, notes ):
 
 		x += 1
 
-	# Go through and change everything into comparative
-	for co in count:
+# Change to probability matrix as opposed to simple count
+
+def probability (co,count):
+
+	# # Go through and change everything into comparative
+	# while co < 12:
 
 		# Initialize cumulative probability
 		cp = 0.
+		c = 0
 
 		# Go through each note in the count
-		for c in count[co]:
+		while c < 12:
 
 			# Divide by total and add cumulative probability
-			count[co][c] = count[co][c]/count[co]['sum'] + cp
+			if c in count[co]:
+				count[co][c] = count[co][c]/count[co]['sum'] + cp
+			else:
+				count[co][c] = 0. + cp
 
 			# Change cumulative probability to reflect difference
 			cp = count[co][c]
+			c += 1
+
+		# co += 1

@@ -1,18 +1,29 @@
-import random
+####################### WRITE.PY #########################
 
-def write(p):
+# Generates music file based on most probable path
+# Current implementation works for order of 2
+
+import random
+import music21
+
+noteList = ['C','C#','D','E-','E','F','F#', 'G','G#','A','B-','B']
+
+def write(p, count):
 
 	# Position in measure
 	l = 0
 
 	# Initalize measure
-	m = stream.Measure()
+	m = music21.stream.Measure()
 
 	# For each possible position in measure
 	while l < 4:
 		
+		# Change from number to pitch
+		pit = noteList[p]
+
 		# Create note with p pitch and quarter duration
-		n = note.Note(p)
+		n = music21.note.Note(pit)
 		# n = pitch.pitchClass(p)
 		n.duration.type = 'quarter'
 
@@ -20,37 +31,37 @@ def write(p):
 		m.append(n)
 
 		# Change p based on probability matrix
-		# Right now just going to highest probable following note
-		
 		r = random.random()
-		print r
+		# print r
 
-		if r <= count[p]['C']:
-			p = 'C'
-		elif r > count[p]['C'] and r <= count[p]['C#']:
-			p = 'C#'
-		elif r > count[p]['C#'] and r <= count[p]['D']:
-			p = 'D'
-		elif r > count[p]['E-'] and r <= count[p]['E']:
-			p = 'E-'
-		elif r > count[p]['E'] and r <= count[p]['F']:
-			p = 'E'
-		elif r > count[p]['F'] and r <= count[p]['F#']:
-			p = 'F'
-		elif r > count[p]['F#'] and r <= count[p]['G']:
-			p = 'F#'
-		elif r > count[p]['G'] and r <= count[p]['G#']:
-			p = 'G'
-		elif r > count[p]['G#'] and r <= count[p]['A']:
-			p = 'G#'
-		elif r > count[p]['A'] and r <= count[p]['B-']:
-			p = 'A'
-		elif r > count[p]['B-'] and r <= count[p]['B']:
-			p = 'B-'
+		# Accounts for various cases for probabilty matrix
+		# Should abstract this at some point
+		if r <= count[p][0]:
+			p = 0
+		elif r > count[p][0] and r <= count[p][1]:
+			p = 1
+		elif r > count[p][1] and r <= count[p][2]:
+			p = 2
+		elif r > count[p][2] and r <= count[p][3]:
+			p = 3
+		elif r > count[p][3] and r <= count[p][4]:
+			p = 4
+		elif r > count[p][4] and r <= count[p][5]:
+			p = 5
+		elif r > count[p][5] and r <= count[p][6]:
+			p = 6
+		elif r > count[p][6] and r <= count[p][7]:
+			p = 7
+		elif r > count[p][7] and r <= count[p][8]:
+			p = 8
+		elif r > count[p][8] and r <= count[p][9]:
+			p = 9
+		elif r > count[p][9] and r <= count[p][10]:
+			p = 10
 		else:
-			p = 'B'
+			p = 11
 
-		print p
+		# print p
 		l += 1
 
 	song.append(m)
