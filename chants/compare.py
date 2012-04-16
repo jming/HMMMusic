@@ -1,4 +1,5 @@
 ####################### COMPARE.PY #########################
+# CS51 Final Project
 
 # Assoc array within assoc array of frequency of note combinations
 # Current implementation accounts for order of 2
