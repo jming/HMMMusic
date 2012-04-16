@@ -8,7 +8,7 @@ import music21
 
 noteList = ['C','C#','D','E-','E','F','F#', 'G','G#','A','B-','B']
 
-def write(p, count):
+def write(p, count, song):
 
 	# Position in measure
 	l = 0

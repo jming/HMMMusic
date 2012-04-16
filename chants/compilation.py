@@ -53,7 +53,7 @@ while co < 12:
 
 # Write 60 measures of song
 while k < 60:
-	write.write(p, count)
+	write.write(p, count, song)
 	k+=1
 
 # Display song as musicXML
