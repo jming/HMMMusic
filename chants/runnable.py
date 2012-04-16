@@ -56,3 +56,8 @@ song = stream.Part()
 
 p = 'C'
 song_length = 60
+
+# Create an array of note sequences for each song
+while i < 60:
+	array(i)
+	i += 1
