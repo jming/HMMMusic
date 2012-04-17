@@ -1,8 +1,8 @@
-####################### COMPILATION.PY #########################
+####################### COMPILATION3.PY #########################
 
 #!/usr/bin/python
 
-# Compilation
+# Compilation using 3 note chains
 # CS51 Final Project 2012
 
 from music21 import *
@@ -18,7 +18,8 @@ i = 0
 j = 0
 co = 0
 k = 0
-p = 0
+p1 = random.randint(0,11)
+p2 = random.randint(0,11)
 
 # Initialize song
 song = stream.Part()
@@ -45,18 +46,22 @@ while j < 60:
 	if (j == 32) or (j == 33) or (j == 34):
 		j += 1
 	else:
-		compare.compare(j, count, notes)
+		compare3.compare(j, count, notes)
 		j += 1
 
 # Generate probability matrix
 while co < 12:
-	compare.probability(co,count)
+	compare3.probability(co,count)
 	co += 1
 
 # Write 60 measures of song
 while k < 60:
-	write.write(p, count, song)
-	k+=1
+        if k = 0:
+            write3.writefirst(p1, p2, count, song)
+            k+=1 
+        else:    
+            write3.write(p1, p2, count, song)
+            k+=1
 
 # Display song as musicXML
 song.show()

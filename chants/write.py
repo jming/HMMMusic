@@ -61,7 +61,7 @@ def write(p, count, song):
 		else:
 			p = 11
 
-		# print p
+		# Move ahead in measure
 		l += 1
 
 	song.append(m)
