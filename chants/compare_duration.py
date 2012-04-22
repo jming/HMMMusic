@@ -4,6 +4,7 @@
 # Assoc array within assoc array of frequency of note combinations
 # Current implementation accounts for order of 2
 # Works for all except 32.mid (excluded)
+import music21
 
 def compare( j, count, notes ):
 	
@@ -19,10 +20,16 @@ def compare( j, count, notes ):
 	# Loop through each note in matrix
 	while x < length - 1:
 
-		# Establish pitch names
-		a = notey[x].pitchClass
-		b = notey[x+1].pitchClass
+		# Establish note durations
+		#a = (int) notey[x].duration
+		#b = (int) notey[x+1].duration
 
+		# Establish closest duration type to numerical duration
+		# i.e. '32nd','16th', 'eighth', 'quarter', 'half', 'whole'
+		a = music21.duration.quarterLengthToClosestType(notey[x].duration.quarterLength)
+		b = music21.duration.quarterLengthToClosestType(notey[x+1].duration.quarterLength)
+		
+		
 		# Increase count of specific note pair in array
 		if a in count:
 			if b in count[a]:
