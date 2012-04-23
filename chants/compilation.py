@@ -8,7 +8,7 @@
 from music21 import *
 
 # Import from files
-import array
+import array1
 import compare 
 import write
 import random
@@ -21,7 +21,7 @@ k = 0
 p = 0
 
 # Initialize song
-song = stream.Part()
+song = music21.stream.Part()
 
 # execfile('array.py')
 # execfile('compare.py')
@@ -37,7 +37,7 @@ while i < 60:
 	if (i == 33) or (i == 34):
 		i += 1
 	else:
-		array.array(i, notes)
+		array1.array(i, notes)
 		i += 1
 
 # Map note transitions for all songs

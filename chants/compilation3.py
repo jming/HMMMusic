@@ -8,10 +8,11 @@
 from music21 import *
 
 # Import from files
-import array
+import array1
 import compare 
 import write
 import random
+import compare3
 
 # Initialize counter variables
 i = 0
@@ -38,7 +39,7 @@ while i < 60:
 	if (i == 33) or (i == 34):
 		i += 1
 	else:
-		array.array(i, notes)
+		array1.array(i, notes)
 		i += 1
 
 # Map note transitions for all songs
@@ -56,7 +57,7 @@ while co < 12:
 
 # Write 60 measures of song
 while k < 60:
-        if k = 0:
+        if k == 0:
             write3.writefirst(p1, p2, count, song)
             k+=1 
         else:    

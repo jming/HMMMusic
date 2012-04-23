@@ -4,6 +4,7 @@
 # Assoc array within assoc array of frequency of note combinations
 # Current implementation accounts for order of 2
 # Works for all except 32.mid (excluded)
+import music21
 
 def compare( j, count, notes ):
 	
