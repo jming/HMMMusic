@@ -13,7 +13,7 @@ import compare
 import write
 import random
 import compare3
-import hiddenwrite3
+import diatonichwrite3
 import compare
 
 # Initialize counter variables
@@ -61,7 +61,7 @@ while co < 12:
         co2 = 0
 
 # Write 60 measures of song
-hiddenwrite3.writer(count2, count3, song, 60)
+diatonichwrite3.writer(count2, count3, song, 60)
 
 # Display song as musicXML
 song.show()
