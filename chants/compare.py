@@ -4,7 +4,6 @@
 # Assoc array within assoc array of frequency of note combinations
 # Current implementation accounts for order of 2
 # Works for all except 32.mid (excluded)
-import music21
 
 def compare( j, count, notes ):
 	
@@ -65,5 +64,3 @@ def probability (co,count):
 			# Change cumulative probability to reflect difference
 			cp = count[co][c]
 			c += 1
-
-		# co += 1

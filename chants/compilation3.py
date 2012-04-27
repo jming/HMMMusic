@@ -8,61 +8,60 @@
 from music21 import *
 
 # Import from files
-import array1
+import array
 import compare 
 import write
 import random
 import compare3
+import hiddenwrite3
+import compare
 
 # Initialize counter variables
 i = 0
 j = 0
+c2 = 0
 co = 0
+co2 = 0
 k = 0
-p1 = random.randint(0,11)
-p2 = random.randint(0,11)
+
 
 # Initialize song
 song = stream.Part()
 
-# execfile('array.py')
-# execfile('compare.py')
-# execfile('write.py')
-
 
 # Initialize notes and count
 notes = {}
-count = {}
+count2 = {}
+count3 = {}
 
 # Create an array of note sequences for each song
 while i < 60:
-	if (i == 33) or (i == 34):
-		i += 1
-	else:
-		array1.array(i, notes)
-		i += 1
+        if (i == 33) or (i == 34):
+                i += 1
+        else:
+                array.array(i, notes)
+                i += 1
 
-# Map note transitions for all songs
+# Map both order 2 and order 3 note transitions for all songs
 while j < 60:
-	if (j == 32) or (j == 33) or (j == 34):
-		j += 1
-	else:
-		compare3.compare(j, count, notes)
-		j += 1
+        if (j == 32) or (j == 33) or (j == 34):
+                j += 1
+        else:
+                compare.compare(j, count2, notes)
+                compare3.compare(j, count3, notes)
+                j += 1
 
 # Generate probability matrix
 while co < 12:
-	compare3.probability(co,count)
-	co += 1
+        while co2 < 12:
+                compare.probability(c2, count2)
+                compare3.probability(co, co2, count3)
+                co2 += 1
+        co += 1
+        co2 = 0
 
 # Write 60 measures of song
-while k < 60:
-        if k == 0:
-            write3.writefirst(p1, p2, count, song)
-            k+=1 
-        else:    
-            write3.write(p1, p2, count, song)
-            k+=1
+hiddenwrite3.writer(count2, count3, song, 60)
 
 # Display song as musicXML
 song.show()
