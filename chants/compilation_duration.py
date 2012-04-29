@@ -8,7 +8,7 @@
 import music21
 
 # Import from files
-import array1
+import notearray
 import compare_pitch
 import compare_duration 
 import write_duration
@@ -40,7 +40,7 @@ while i < 60:
 	if (i == 33) or (i == 34):
 		i += 1
 	else:
-		array1.array(i, notes)
+		notearray.array(i, notes)
 		i += 1
 
 # Map note transitions for all songs

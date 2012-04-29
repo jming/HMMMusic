@@ -9,7 +9,7 @@
 from music21 import *
 
 # Import from files
-import array1
+import notearray
 import compare 
 import write_final
 import random
@@ -46,7 +46,7 @@ while i < 60:
         if (i == 33) or (i == 34):
             i += 1
         else:
-            array1.array(i, notes)
+            notearray.array(i, notes)
             i += 1
 
 # Map both order 2 and order 3 note transitions for all songs
