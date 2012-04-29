@@ -33,13 +33,17 @@ hiddens = {'h1': {'h1': 1.0, 'h2': 0.0, 'h3': 0.0},
 # Function writes first measure, followed by all others
 def writer(countmatrix2, countmatrix3, countd, songstream, num_measures):
     global d
+    print "writer started"
     
     #Write first measure
     writefirst(countmatrix2, countmatrix3, countd, songstream)
+    print "writefirst complete"
     
     #Write as many other measures as desired
     for i in range(num_measures-1):
-        write(countmatrix2, countmatrix3, countd, songstream, d)
+        print "write"
+        print i
+        write(countmatrix2, countmatrix3, countd, songstream)
 
 
 # Function picks a note based on a given probability distribution.
@@ -55,7 +59,9 @@ def pickanote(countmatrices, order):
     holdp1 = p1
         
     while looper:
-
+        
+        print "while looper"
+        print p1
         # Make random number between 0 and 1
         r = random.random()
         
@@ -99,7 +105,10 @@ def pickanote(countmatrices, order):
             else:
                 p1 = 11
                 modemaker(p1)
-                    
+            
+            print "p1 after first section of ifs/elses"
+            print p1
+            
             # Checks for ugly note intervals
             if holdp1 == 0 and (p1 == 11 or p1 == 10):
                 looper = True
@@ -129,6 +138,9 @@ def pickanote(countmatrices, order):
                 looper = False
             else:
                 p1 = holdp1
+            print "end of while looper"
+            print p1
+            print looper
                 
 
         # Use order 3 transition probabilities to find a third note given two.
@@ -259,7 +271,7 @@ def pickanote(countmatrices, order):
 
             # First if statement keeps note from being repeated more than twice
           # in a row
-            if p1 == holdp1 and (p2 - p1)%key == 0:
+            if p1 == holdp1 and (p2 == p1):
                 looper = True
             # Checks for ugly intervals, makes sure note is diatonic
             elif p1 == 0 and (p2 == 11 or p2 == 10):
@@ -307,7 +319,6 @@ def modemaker(newpit):
 # Writes first measure. All transition matrices should be passed in as
 # arguments. 
 def writefirst(countmat2, countmat, countd, mysong):
-
     global p1
     global p2
     global state
@@ -340,7 +351,7 @@ def writefirst(countmat2, countmat, countd, mysong):
 
     # Choose second note based on order 2 transitions
     pickanote({2:emissions[state][2], 3: emissions[state][3]},2)
-    pickd(countd, d)
+    pickd(countd)
     
     n2 = music21.note.Note(noteList[p1])
     n2.duration.type = dList[d]
@@ -367,18 +378,18 @@ def writefirst(countmat2, countmat, countd, mysong):
     
     # Pick next note based on order 3 transitions
     pickanote({2:emissions[state][2], 3: emissions[state][3]}, 3)
-    pickd(countd, d)
+    pickd(countd)
     
     # Write two more notes in measure to make a four-note measure
-    writepitch(m, countmat, countmat2, countd, d)
-    writepitch(m, countmat, countmat2, countd, d)
+    writepitch(m, countmat, countmat2, countd)
+    writepitch(m, countmat, countmat2, countd)
 
     #write measure to song
     mysong.append(m)
 
     #print "writefirst done"
   
-def writepitch(msr,counts, counts2, countd, d):
+def writepitch(msr,counts, counts2, countd):
 
     # Definition of global variables. 
     global p1
@@ -407,11 +418,12 @@ def writepitch(msr,counts, counts2, countd, d):
 
     #Choose new note
     pickanote({2: emissions[state][2], 3: emissions[state][3]},3)
-    pickd(countd, d)
+    pickd(countd)
     
 
-def write(countm2, countm, countmd, songs, countd, d):
-        #print "write start"
+def write(countm2, countm, countd, songs):
+    print "write start"
+    global d
   # Position in measure
     l = 0
 
@@ -420,12 +432,14 @@ def write(countm2, countm, countmd, songs, countd, d):
 
         #write four quarter notes
     for i in range(4):
-            writepitch(m, countm, countm2, countd, d)
+            writepitch(m, countm, countm2, countd)
 
         #write measure to song
     songs.append(m)
 
-def pickd(countd, d):
+def pickd(countd):
+    print "pickd"
+    global d
     # Pick a duration based on probability matrix for duration
     r2 = random.random()
         # print r
@@ -438,7 +452,11 @@ def pickd(countd, d):
         d = 1
             #d = 'eighth'
     elif r2 > countd[d][1] and r2 <= countd[d][2]:
-        d = 2
+        r3 = random.randint(0,3)
+        if r3 = 0:
+            d = 2
+        else:
+            pickd(countd)
             #d = 'quarter'
     elif r2 > countd[d][2] and r2 <= countd[d][3]:
         d = 3
