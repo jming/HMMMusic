@@ -20,7 +20,7 @@ def write(p, count, song):
 	while l < 4:
 		
 		# Change from number to pitch
-		pit = noteList[p]
+		pit = noteList[pi]
 
 		# Create note with p pitch and quarter duration
 		n = music21.note.Note(pit)
