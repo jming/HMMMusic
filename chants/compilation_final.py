@@ -27,6 +27,7 @@ co2 = 0
 k = 0
 p = 0
 cod = 0
+ca = 0
 # initialize quarter note as first duration
 d = 3
 
@@ -41,35 +42,47 @@ countd = {}
 
 # Create an array of note sequences for each song
 while i < 60:
-        if (i == 33) or (i == 34):
-            i += 1
-        else:
-            notearray.array(i, notes)
-            i += 1
+    if (i == 33) or (i == 34):
+        i += 1
+    else:
+        notearray.array(i, notes)
+        i += 1
+
+print "array done"
 
 # Map both order 2 and order 3 note transitions for all songs
 # Also map duration transitions for all songs
 while j < 60:
-        if (j == 32) or (j == 33) or (j == 34):
-            j += 1
-        else:
-            compare.compare(j, count2, notes)
-            compare3.compare(j, count3, notes)
-            compare_duration.compare(j, countd, notes)
-            j += 1
+    if (j == 32) or (j == 33) or (j == 34):
+        j += 1
+    else:
+        compare.compare(j, count2, notes)
+        compare3.compare(j, count3, notes)
+        compare_duration.compare(j, countd, notes)
+        j += 1
+
+print "compare done"
 
 # Generate probability matrices for order 2, order 3 and durations
+while ca < 12:
+    compare.probability(ca,count)
+    ca += 1
+
 while co < 12:
-        while co2 < 12:
-            compare.probability(c2, count2)
-            compare3.probability(co, co2, count3)
-            co2 += 1
-        co += 1
-        co2 = 0
+    while co2 < 12:
+        compare3.probability(co, co2, count3)
+        co2 += 1
+    compare.probability(co,count2)
+    co += 1
+    co2 = 0
+
+print "probability done"
 
 while cod < 4:
     compare_duration.probability(cod, countd)
     cod += 1
+
+print "duration done"
 
 # Write 60 measures of song
 write_final.writer(count2, count3, countd, song, 60)
