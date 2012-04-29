@@ -4,6 +4,7 @@
 
 # Compilation using 3 note chains
 # CS51 Final Project 2012
+# AN, LS, and JM
 
 from music21 import *
 
