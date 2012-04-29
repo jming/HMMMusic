@@ -57,51 +57,51 @@ def pickanote(countmatrices, order):
     while looper:
 
         # Make random number between 0 and 1
-      r = random.random()
+        r = random.random()
         
         # Use order two transition probabilities to find a second note given
       # a first
-      if order == 2:            
+        if order == 2:            
             if r <= countmatrices[2][p1][0]:
-                    p1 = 0
-                    # In each case, check to see if mode needs to be set
-		            modemaker(p1)
+                p1 = 0
+                modemaker(p1)
+                    # In each case, check to see if mode needs to be see
             elif r > countmatrices[2][p1][0] and r <= countmatrices[2][p1][1]:
-                    p1 = 1
-                    modemaker(p1)
+                p1 = 1
+                modemaker(p1)
             elif r > countmatrices[2][p1][1] and r <= countmatrices[2][p1][2]:
-                    p1 = 2
-                    modemaker(p1)
+                p1 = 2
+                modemaker(p1)
             elif r > countmatrices[2][p1][2] and r <= countmatrices[2][p1][3]:
-                    p1 = 3
-                    modemaker(p1)
+                p1 = 3
+                modemaker(p1)
             elif r > countmatrices[2][p1][3] and r <= countmatrices[2][p1][4]:
-                    p1 = 4
-                    modemaker(p1)
+                p1 = 4
+                modemaker(p1)
             elif r > countmatrices[2][p1][4] and r <= countmatrices[2][p1][5]:
-                    p1 = 5
-                    modemaker(p1)
+                p1 = 5
+                modemaker(p1)
             elif r > countmatrices[2][p1][5] and r <= countmatrices[2][p1][6]:
-                    p1 = 6
-                    modemaker(p1)
+                p1 = 6
+                modemaker(p1)
             elif r > countmatrices[2][p1][6] and r <= countmatrices[2][p1][7]:
-                    p1 = 7
-                    modemaker(p1)
+                p1 = 7
+                modemaker(p1)
             elif r > countmatrices[2][p1][7] and r <= countmatrices[2][p1][8]:
-                    p1 = 8
-                    modemaker(p1)
+                p1 = 8
+                modemaker(p1)
             elif r > countmatrices[2][p1][8] and r <= countmatrices[2][p1][9]:
-                    p1 = 9
-                    modemaker(p1)
+                p1 = 9
+                modemaker(p1)
             elif r > countmatrices[2][p1][9] and r <= countmatrices[2][p1][10]:
-                    p1 = 10
-                    modemaker(p1)
+                p1 = 10
+                modemaker(p1)
             else:
-                    p1 = 11
-                    modemaker(p1)
+                p1 = 11
+                modemaker(p1)
                     
             # Checks for ugly note intervals
-          if holdp1 == 0 and (p1 == 11 or p1 == 10):
+            if holdp1 == 0 and (p1 == 11 or p1 == 10):
                 looper = True
             elif holdp1 == 11 and p1 == 0:
                 looper = True
@@ -109,7 +109,7 @@ def pickanote(countmatrices, order):
                 looper = True
             # Forces chosen note to be in diatonic scale, or else will
           # loop once more
-          elif (p1 - key)%12 == 0:
+            elif (p1 - key)%12 == 0:
                 looper = False
             elif ((p1 - key)%12 == 2):
                 looper = False
@@ -134,7 +134,7 @@ def pickanote(countmatrices, order):
         # Use order 3 transition probabilities to find a third note given two.
       # In case a given two-state has no possible transitions from it, use the
       # order 2 model. 
-      elif order == 3 and (p2 not in countmatrices[3][p1]):
+        elif order == 3 and (p2 not in countmatrices[3][p1]):
             p1 = p2
             if r <= countmatrices[2][p1][0]:
                     p2 = 0
@@ -174,7 +174,7 @@ def pickanote(countmatrices, order):
                     modemaker(p2)
 
             # Screens for ugly note intervals (major and minor sevenths)
-          if p1 == 0 and (p2 == 11 or p2 == 10):
+            if p1 == 0 and (p2 == 11 or p2 == 10):
                 looper = True
             elif p1 == 11 and p2 == 0:
                 looper = True
@@ -182,7 +182,7 @@ def pickanote(countmatrices, order):
                 looper = True
             # Forces chosen note to be in diatonic scale, or else will
           # loop once more
-          elif (p2 - key)%12 == 0:
+            elif (p2 - key)%12 == 0:
                 looper = False
             elif ((p2 - key)%12 == 2):
                 looper = False
@@ -207,7 +207,7 @@ def pickanote(countmatrices, order):
         # As long as transitions for the 2-state exist,
       # the new p1 becomes the old p2. Second, the new p2 is
       # assigned a value according to the transition probabilities            
-      else:
+        else:
             if r <= countmatrices[3][p1][p2][0]:
                     p1 = p2
                     p2 = 0
@@ -259,10 +259,10 @@ def pickanote(countmatrices, order):
 
             # First if statement keeps note from being repeated more than twice
           # in a row
-          if p1 == holdp1 and (p2 - p1)%key == 0:
+            if p1 == holdp1 and (p2 - p1)%key == 0:
                 looper = True
             # Checks for ugly intervals, makes sure note is diatonic
-          elif p1 == 0 and (p2 == 11 or p2 == 10):
+            elif p1 == 0 and (p2 == 11 or p2 == 10):
                 looper = True
             elif p1 == 11 and p2 == 0:
                 looper = True
@@ -319,18 +319,18 @@ def writefirst(countmat2, countmat, countd, mysong):
     # Define emission probabilities from each hidden state.
   # These are defined locally since the names of the transition matrices
   # are not global.
-  emissions = {'h1': {2: countmat2, 3: countmat}, 'h2': {}, 'h3': {}}
+    emissions = {'h1': {2: countmat2, 3: countmat}, 'h2': {}, 'h3': {}}
 
     # Define probabilities of starting in any given state
-  starting_probs = {'h1': 1.0, 'h2': 0.0, 'h3': 0.0}
+    starting_probs = {'h1': 1.0, 'h2': 0.0, 'h3': 0.0}
 
     # Choose first note pitch and duration based on random number, save it as key of piece
-  n1 = music21.note.Note(noteList[p1])
+    n1 = music21.note.Note(noteList[p1])
     key = p1
     n1.duration.type = dList[d]
 
     # Find first state based on starting probabilities
-  r1 = random.random()
+    r1 = random.random()
     if r1 <= starting_probs['h1']:
         state = 'h1'
     elif r1 > starting_probs['h1'] and r1 <= starting_probs['h2']:
@@ -339,25 +339,25 @@ def writefirst(countmat2, countmat, countd, mysong):
         state = 'h3'
 
     # Choose second note based on order 2 transitions
-  pickanote({2:emissions[state][2], 3: emissions[state][3]},2)
+    pickanote({2:emissions[state][2], 3: emissions[state][3]},2)
     pickd(countd, d)
     
     n2 = music21.note.Note(noteList[p1])
     n2.duration.type = dList[d]
 
     # Initialize and write to measure 
-  m = music21.stream.Measure()
+    m = music21.stream.Measure()
 
     m.append(n1)
     m.append(n2)
 
     # Make sure p1 and p2 reflect first two notes
-  p2 = p1
+    p2 = p1
     p1 = key
 
     # Possible change of hidden state, based on hiddens[state]
   # transition probabilities
-  r1 = random.random()
+    r1 = random.random()
     if r1 <= hiddens[state]['h1']:
         state = 'h1'
     elif r1 > hiddens[state]['h1'] and r1 <= hiddens[state]['h2']:
@@ -366,38 +366,38 @@ def writefirst(countmat2, countmat, countd, mysong):
         state = 'h3'
     
     # Pick next note based on order 3 transitions
-  pickanote({2:emissions[state][2], 3: emissions[state][3]}, 3)
+    pickanote({2:emissions[state][2], 3: emissions[state][3]}, 3)
     pickd(countd, d)
     
     # Write two more notes in measure to make a four-note measure
-  writepitch(m, countmat, countmat2, countd, d)
+    writepitch(m, countmat, countmat2, countd, d)
     writepitch(m, countmat, countmat2, countd, d)
 
     #write measure to song
-  mysong.append(m)
+    mysong.append(m)
 
     #print "writefirst done"
   
 def writepitch(msr,counts, counts2, countd, d):
 
     # Definition of global variables. 
-  global p1
+    global p1
     global p2
     global state
 
     emissions = {'h1': {2: counts2, 3: counts}, 'h2': {}, 'h3': {}}
 
     # Create note with p2 pitch and quarter duration
-  pit2 = noteList[p2]
+    pit2 = noteList[p2]
     n2 = music21.note.Note(pit2)
     n2.duration.type = dList[d]
 
     # Add this onto the measure
-  msr.append(n2)
+    msr.append(n2)
 
     # Possible change of hidden state, based on hiddens[state]
   # transition probabilities
-  r1 = random.random()
+    r1 = random.random()
     if r1 <= hiddens[state]['h1']:
         state = 'h1'
     elif r1 > hiddens[state]['h1'] and r1 <= hiddens[state]['h2']:
@@ -406,43 +406,44 @@ def writepitch(msr,counts, counts2, countd, d):
         state = 'h3'
 
     #Choose new note
-  pickanote({2: emissions[state][2], 3: emissions[state][3]},3)
+    pickanote({2: emissions[state][2], 3: emissions[state][3]},3)
     pickd(countd, d)
     
 
 def write(countm2, countm, countmd, songs, countd, d):
         #print "write start"
   # Position in measure
-  l = 0
+    l = 0
 
     # Initalize measure
-  m = music21.stream.Measure()
+    m = music21.stream.Measure()
 
         #write four quarter notes
-  for i in range(4):
+    for i in range(4):
             writepitch(m, countm, countm2, countd, d)
 
         #write measure to song
-  songs.append(m)
+    songs.append(m)
 
 def pickd(countd, d):
     # Pick a duration based on probability matrix for duration
-      r2 = random.random()
+    r2 = random.random()
         # print r
       #'32nd','16th', 'eighth', 'quarter', 'half', 'whole'
       
-        if r2 <= countd[d][0]:
-            d = 0
+    if r2 <= countd[d][0]:
+        d = 0
             #d = '16th'
-      elif r2 > countd[d][0] and r2 <= countd[d][1]:
-            d = 1
+    elif r2 > countd[d][0] and r2 <= countd[d][1]:
+        d = 1
             #d = 'eighth'
-      elif r2 > countd[d][1] and r2 <= countd[d][2]:
-            d = 2
+    elif r2 > countd[d][1] and r2 <= countd[d][2]:
+        d = 2
             #d = 'quarter'
-      elif r2 > countd[d][2] and r2 <= countd[d][3]:
-            d = 3
+    elif r2 > countd[d][2] and r2 <= countd[d][3]:
+        d = 3
             #d = 'half'
-      else:
-            d = 4
+    else:
+        d = 4
             #d = 'whole'
+ 
