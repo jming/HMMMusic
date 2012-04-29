@@ -18,9 +18,7 @@ import random
 i = 0
 j = 0
 co = 0
-global k
 k = 0
-global p
 p = 0
 cod = 0
 d = 3
