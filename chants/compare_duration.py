@@ -7,7 +7,7 @@
 import music21
 
 def compare( j, countd, notes ):
-	
+
 	# Specific note matrix from file
 	notey = notes[j]
 
@@ -16,15 +16,15 @@ def compare( j, countd, notes ):
 
 	# Array of duration sequence (rhythm) of song, in tuple type
 	durations = []
-	
+
 	# Establishes note durations as closest duration type to numerical representation
-	# i.e. '16th', 'eighth', 'quarter', 'half', 'whole'
+	# i.e. '32nd','16th', 'eighth', 'quarter', 'half', 'whole'
 	for n in notey:
 		durations.append(music21.duration.quarterLengthToClosestType(n.duration.quarterLength))
-	
+
 	# Array of duration sequence of song with only duration types
 	durations2 = []
-	
+
 	# Duration types returned as tuple, detuples and adds them to a list, filtering out
 	# unnecessary information
 	for d in durations:
@@ -32,34 +32,42 @@ def compare( j, countd, notes ):
 			if isinstance(e, str):
 				durations2.append(e)
 
-				
-	
+
+
 	#PROBABLY NOT NEEDED
 	durations3 = []
 	# Converts duration type names of notes into numbers for easy manipulation
 	# Assigns integer values to each note duration type
 	for y in durations2:
-		if y =='16th':
+		if y =='32nd':
 			durations3.append(0)
-		elif y == 'eighth': 
+				#nums[0]+=1
+		if y =='16th':
 			durations3.append(1)
-		elif y == 'quarter': 
+				#nums[1]+=1
+		elif y == 'eighth': 
 			durations3.append(2)
-		elif y =='half': 
+				#nums[2]+=1
+		elif y == 'quarter': 
 			durations3.append(3)
-		elif y =='whole': 
+			#nums[3]+=1
+		elif y =='half': 
 			durations3.append(4)
-	
-	
+				#nums[4]+=1
+		elif y =='whole': 
+				durations3.append(5)
+				#nums[5]+=1
+
+
 	# length of durations2
 	length = len(durations3)
-	
+
 	# Loop through each note in matrix
 	while x < length - 1:
-		
+
 		a = durations3[x]
 		b = durations3[x+1]
-		
+
 		# Increase countd of specific note pair in array
 		if a in countd:
 			if b in countd[a]:

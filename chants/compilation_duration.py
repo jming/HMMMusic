@@ -5,7 +5,7 @@
 # Compilation
 # CS51 Final Project 2012
 
-from music21 import *
+import music21
 
 # Import from files
 import array1
@@ -21,7 +21,7 @@ co = 0
 k = 0
 p = 0
 cod = 0
-d = 0
+d = 3
 
 # Initialize song
 song = music21.stream.Part()
@@ -52,15 +52,15 @@ while j < 60:
 		compare_duration.compare(j, countd, notes)
 		j += 1
 
-# Generate probability matrices for notes (one for pitch and one for duration of notes)
+# Generate probability matrix for notes
 while co < 12:
 	compare_pitch.probability(co,countn)
 	co += 1
-	
-while cod < 4:
+
+while cod < 5:
 	compare_duration.probability(cod, countd)
 	cod += 1
-	
+
 # Combine pitch transition matrix with duration transition matrix to create a song
 # dependent on two Markov models, pitch and duration
 
@@ -71,4 +71,3 @@ while k < 60:
 
 # Display song as musicXML
 song.show()
-
