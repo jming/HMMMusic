@@ -30,10 +30,8 @@ cod = 0
 # initialize quarter note as first duration
 d = 3
 
-
 # Initialize song
 song = stream.Part()
-
 
 # Initialize notes and count
 notes = {}
