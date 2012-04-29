@@ -28,10 +28,10 @@ def compare( j, count, notes ):
 		# Increase count of specific note triplet in array
 		if a in count:
 			if b in count[a]:
-                                if c in count[a][b]:
-                                        count[a][b][c] += 1
-                                else:
-                                        count[a][b][c] = 1.
+                if c in count[a][b]:
+                        count[a][b][c] += 1
+                else:
+                        count[a][b][c] = 1.
 			else:
 				count[a][b] = {}
 				count[a][b][c] = 1.
@@ -57,29 +57,28 @@ def probability (co,co2, count):
         #co2 = 0
         #while co2 < 12:
 
-                #check whether this state exists in "count"
-                if co2 in count[co]:
+        #check whether this state exists in "count"
+        if co2 in count[co]:
 
+                # Initialize cumulative probability
+                cp = 0.
+                i = 0
 
-                        # Initialize cumulative probability
-                        cp = 0.
-                        i = 0
+                # Go through each note in the count
+                while i < 12:
 
-                        # Go through each note in the count
-                        while i < 12:
+                        # Divide by total and add cumulative probability
+                        if i in count[co][co2]:
+                                count[co][co2][i] = count[co][co2][i]/count[co][co2]['sum'] + cp
+                        else:
+                                count[co][co2][i] = 0. + cp
 
-                                # Divide by total and add cumulative probability
-                                if i in count[co][co2]:
-                                        count[co][co2][i] = count[co][co2][i]/count[co][co2]['sum'] + cp
-                                else:
-                                        count[co][co2][i] = 0. + cp
-
-                                # Change cumulative probability to reflect difference
-                                cp = count[co][co2][i]
-                                i += 1
-                        #co2 += 1
-                
-                else:
-                        return
-                        #co2 += 1
+                        # Change cumulative probability to reflect difference
+                        cp = count[co][co2][i]
+                        i += 1
+                #co2 += 1
+        
+        else:
+                return
+                #co2 += 1
 

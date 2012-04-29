@@ -50,6 +50,8 @@ def writer(countmatrix2, countmatrix3, countd, songstream, num_measures):
 # Simply a way of consolidating messy sections of code. 
 def pickanote(countmatrices, order):
 
+    print "pickanote"
+
     # Define global variables
     global p1
     global p2
@@ -306,6 +308,9 @@ def pickanote(countmatrices, order):
 # Function checks whether this is first instance of "modal" note -- a sixth
 # or third -- and sets mode accordingly
 def modemaker(newpit):
+
+    print "modemaker"
+
     global firstmodal
     global mode
     
@@ -319,6 +324,12 @@ def modemaker(newpit):
 # Writes first measure. All transition matrices should be passed in as
 # arguments. 
 def writefirst(countmat2, countmat, countd, mysong):
+<<<<<<< HEAD
+=======
+
+    print "writefirst"
+
+>>>>>>> c4b15d19265601b7e2cb673de948d806a19b5627
     global p1
     global p2
     global state
@@ -391,6 +402,8 @@ def writefirst(countmat2, countmat, countd, mysong):
   
 def writepitch(msr,counts, counts2, countd):
 
+    print "writepitch"
+
     # Definition of global variables. 
     global p1
     global p2
@@ -421,9 +434,17 @@ def writepitch(msr,counts, counts2, countd):
     pickd(countd)
     
 
+<<<<<<< HEAD
 def write(countm2, countm, countd, songs):
     print "write start"
     global d
+=======
+def write(countm2, countm, countmd, songs, countd, d):
+
+    print "write"
+
+        #print "write start"
+>>>>>>> c4b15d19265601b7e2cb673de948d806a19b5627
   # Position in measure
     l = 0
 
@@ -437,9 +458,16 @@ def write(countm2, countm, countd, songs):
         #write measure to song
     songs.append(m)
 
+<<<<<<< HEAD
 def pickd(countd):
     print "pickd"
     global d
+=======
+def pickd(countd, d):
+
+    print "pickd"
+
+>>>>>>> c4b15d19265601b7e2cb673de948d806a19b5627
     # Pick a duration based on probability matrix for duration
     r2 = random.random()
         # print r
