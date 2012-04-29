@@ -27,7 +27,6 @@ co2 = 0
 k = 0
 p = 0
 cod = 0
-ca = 0
 # initialize quarter note as first duration
 d = 3
 
@@ -64,9 +63,6 @@ while j < 60:
 print "compare done"
 
 # Generate probability matrices for order 2, order 3 and durations
-while ca < 12:
-    compare.probability(ca,count)
-    ca += 1
 
 while co < 12:
     while co2 < 12:
