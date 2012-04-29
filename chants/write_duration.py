@@ -1,15 +1,19 @@
 ####################### WRITE.PY #########################
 
 # Generates music file based on most probable path
-# Current implementation works for order of 2
+# Current implementation works for order of 2 and duration of notes
 
 import random
 import music21
 
 noteList = ['C','C#','D','E-','E','F','F#', 'G','G#','A','B-','B']
-dList = ['32nd', '16th', 'eighth', 'quarter', 'half', 'whole']
+dList = ['16th', 'eighth', 'quarter', 'half', 'whole']
 
 def write(p, d, countn, countd, song):
+
+	# random ints to start off song
+	p1 = random.randomInt(0,11)
+	d1 = random.randomInt(0,4)
 
 	# Position in measure
 	l = 0
@@ -21,9 +25,9 @@ def write(p, d, countn, countd, song):
 	while l < 4:
 		
 		# Change from number to pitch
-		pit = noteList[p]
+		pit = noteList[p1]
 		# Change from number to duration type
-		dur = dList[d]
+		dur = dList[d1]
 
 		# Create note with p pitch and dur duration
 		n = music21.note.Note(pit)
@@ -71,21 +75,18 @@ def write(p, d, countn, countd, song):
 		
 		if r2 <= countd[d][0]:
 			d = 0
-			#d = '32nd'
+			#d = '16th'
 		elif r2 > countd[d][0] and r2 <= countd[d][1]:
 			d = 1
-			#d = '16th'
+			#d = 'eighth'
 		elif r2 > countd[d][1] and r2 <= countd[d][2]:
 			d = 2
-			#d = 'eighth'
+			#d = 'quarter'
 		elif r2 > countd[d][2] and r2 <= countd[d][3]:
 			d = 3
-			#d = 'quarter'
-		elif r2 > countd[d][3] and r2 <= countd[d][4]:
-			d = 4
 			#d = 'half'
 		else:
-			d = 5
+			d = 4
 			#d = 'whole'
 			
 		# Move ahead in measure

@@ -21,7 +21,7 @@ co = 0
 k = 0
 p = 0
 cod = 0
-d = 3
+d = 0
 
 # Initialize song
 song = music21.stream.Part()
@@ -52,12 +52,12 @@ while j < 60:
 		compare_duration.compare(j, countd, notes)
 		j += 1
 
-# Generate probability matrix for notes
+# Generate probability matrices for notes (one for pitch and one for duration of notes)
 while co < 12:
 	compare_pitch.probability(co,countn)
 	co += 1
 	
-while cod < 5:
+while cod < 4:
 	compare_duration.probability(cod, countd)
 	cod += 1
 	

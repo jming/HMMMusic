@@ -18,7 +18,7 @@ def compare( j, countd, notes ):
 	durations = []
 	
 	# Establishes note durations as closest duration type to numerical representation
-	# i.e. '32nd','16th', 'eighth', 'quarter', 'half', 'whole'
+	# i.e. '16th', 'eighth', 'quarter', 'half', 'whole'
 	for n in notey:
 		durations.append(music21.duration.quarterLengthToClosestType(n.duration.quarterLength))
 	
@@ -39,24 +39,16 @@ def compare( j, countd, notes ):
 	# Converts duration type names of notes into numbers for easy manipulation
 	# Assigns integer values to each note duration type
 	for y in durations2:
-		if y =='32nd':
-			durations3.append(0)
-				#nums[0]+=1
 		if y =='16th':
-			durations3.append(1)
-				#nums[1]+=1
+			durations3.append(0)
 		elif y == 'eighth': 
-			durations3.append(2)
-				#nums[2]+=1
+			durations3.append(1)
 		elif y == 'quarter': 
-			durations3.append(3)
-			#nums[3]+=1
+			durations3.append(2)
 		elif y =='half': 
-			durations3.append(4)
-				#nums[4]+=1
+			durations3.append(3)
 		elif y =='whole': 
-				durations3.append(5)
-				#nums[5]+=1
+			durations3.append(4)
 	
 	
 	# length of durations2
