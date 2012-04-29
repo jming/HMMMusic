@@ -1,4 +1,4 @@
-####################### DIATONICHWRITE3.PY #########################
+####################### WRITE_FINAL.PY #########################
 
 # Generates music file based on most probable path
 # of pitches of notes (order 3) and durations of notes (order 2)
@@ -35,11 +35,11 @@ def writer(countmatrix2, countmatrix3, countd, songstream, num_measures):
     global d
     print "writer started"
     
-    #Write first measure
+    # Write first measure
     writefirst(countmatrix2, countmatrix3, countd, songstream)
     print "writefirst complete"
     
-    #Write as many other measures as desired
+    # Write as many other measures as desired
     for i in range(num_measures-1):
         print "write"
         print i
@@ -57,7 +57,8 @@ def pickanote(countmatrices, order):
     looper = True
 
     holdp1 = p1
-        
+    
+    # while loop to ensure that all notes are in the same key and mode
     while looper:
         
         print "while looper"
@@ -66,12 +67,12 @@ def pickanote(countmatrices, order):
         r = random.random()
         
         # Use order two transition probabilities to find a second note given
-      # a first
+        # a first
         if order == 2:            
             if r <= countmatrices[2][p1][0]:
                 p1 = 0
                 modemaker(p1)
-                    # In each case, check to see if mode needs to be see
+            # In each case, check to see if mode needs to be see
             elif r > countmatrices[2][p1][0] and r <= countmatrices[2][p1][1]:
                 p1 = 1
                 modemaker(p1)
@@ -452,14 +453,15 @@ def pickd(countd):
         d = 1
             #d = 'eighth'
     elif r2 > countd[d][1] and r2 <= countd[d][2]:
-        r3 = random.randint(0,3)
-        if r3 == 0:
-            d = 2
-        else:
-            pickd(countd)
+        d = 2
             #d = 'quarter'
     elif r2 > countd[d][2] and r2 <= countd[d][3]:
-        d = 3
+        r3 = random.randint(0,3)
+        if r3 == 0:
+            d = 3
+        else:
+            d = 0
+        #    pickd(countd)
             #d = 'half'
     else:
         d = 4
