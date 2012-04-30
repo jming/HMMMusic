@@ -1,9 +1,15 @@
 ####################### COMPILATION.PY #########################
-
+#
+# Alisa Nguyen, Lee Seligman, Joy Ming
+# CS 51 Final Project Spring 2012
+# Mirroring Music: Music Generation with Hidden Markov Models
+#
 #!/usr/bin/python
-
-# Compilation
-# CS51 Final Project 2012
+#
+# Compilation generates a random song based on an Order 2
+# pitch Markov model 
+#
+####################### COMPILATION.PY #########################
 
 from music21 import *
 
@@ -26,7 +32,6 @@ song = music21.stream.Part()
 # execfile('array.py')
 # execfile('compare.py')
 # execfile('write.py')
-
 
 # Initialize notes and count
 notes = {}

@@ -1,11 +1,18 @@
-####################### WRITE.PY #########################
-
+####################### WRITE.PY ############################
+#
+# Alisa Nguyen, Lee Seligman, Joy Ming
+# CS 51 Final Project Spring 2012
+# Mirroring Music: Music Generation with Hidden Markov Models
+#
 # Generates music file based on most probable path
 # Current implementation works for order of 2
+#
+####################### WRITE.PY ############################
 
 import random
 import music21
 
+# Array of all possible notes
 noteList = ['C','C#','D','E-','E','F','F#', 'G','G#','A','B-','B']
 
 def write(p, count, song):
@@ -20,7 +27,7 @@ def write(p, count, song):
 	while l < 4:
 		
 		# Change from number to pitch
-		pit = noteList[pi]
+		pit = noteList[p]
 
 		# Create note with p pitch and quarter duration
 		n = music21.note.Note(pit)

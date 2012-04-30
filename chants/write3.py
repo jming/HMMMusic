@@ -1,14 +1,18 @@
-####################### WRITE3.PY #########################
-
+####################### WRITE3.PY ###########################
+#
+# Alisa Nguyen, Lee Seligman, Joy Ming
+# CS 51 Final Project Spring 2012
+# Mirroring Music: Music Generation with Hidden Markov Models
+#
 # Generates music file based on most probable path
 # For 3-note chains, 4 quarter notes per measure
+#
+####################### WRITE3.PY ###########################
 
 import random
 import music21
 
 noteList = ['C','C#','D','E-','E','F','F#', 'G','G#','A','B-','B']
-
-
 
 def writefirst(pt1, pt2, count, song):
 
@@ -109,15 +113,14 @@ def writepitch(no1,no2,measure,count):
     global dummy1
     global dummy2
 
-    print "writepitch started with p1="
-    print p1
-    print "p2 = "
-    print p2
-    print "no1 = "
-    print no1
-    print "no2 = "
-    print no2
-
+    #print "writepitch started with p1="
+    #print p1
+    #print "p2 = "
+    #print p2
+    #print "no1 = "
+    #print no1
+    #print "no2 = "
+    #print no2
 
     # Change from number to pitch (will only need to write no)
     pit2 = noteList[p2]
@@ -210,11 +213,11 @@ def write(pch1, pch2, count, song):
 
         #write four quarter notes
 	for i in range(4):
-            writepitch(dummy1, dummy2, m, count)
-            print "following are dummy1, dummy2, and count[][]"
-            print dummy1
-            print dummy2
-            print count[dummy1][dummy2]
+        writepitch(dummy1, dummy2, m, count)
+        print "following are dummy1, dummy2, and count[][]"
+        print dummy1
+        print dummy2
+        print count[dummy1][dummy2]
 
 
 ##	# For each possible position in measure
@@ -225,6 +228,6 @@ def write(pch1, pch2, count, song):
 ##            l += 1
 
         #write measure to song
-        song.append(m)
-        print "write finished"
+    song.append(m)
+        #print "write finished"
             

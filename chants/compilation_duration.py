@@ -1,13 +1,19 @@
-####################### COMPILATION.PY #########################
-
+####################### COMPILATION_DURATION.PY #########################
+#
+# Alisa Nguyen, Lee Seligman, Joy Ming
+# CS 51 Final Project Spring 2012
+# Mirroring Music: Music Generation with Hidden Markov Models
+#
 #!/usr/bin/python
-
+#
 # Compilation
 # CS51 Final Project 2012
+#
+####################### COMPILATION_DURATION.PY #########################
 
 import music21
 
-# Import from files
+# Import modules from files
 import notearray
 import compare_pitch
 import compare_duration 
@@ -18,9 +24,11 @@ import random
 i = 0
 j = 0
 co = 0
-k = 0
-p = 0
 cod = 0
+k = 0
+
+# Initialize variables for current note and duration
+p = 0
 d = 3
 
 # Initialize song

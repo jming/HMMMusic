@@ -1,20 +1,24 @@
-####################### COMPILATION3.PY #########################
-
+####################### COMPILATION_FINAL.PY #########################
+#
+# Alisa Nguyen, Lee Seligman, Joy Ming
+# CS 51 Final Project Spring 2012
+# Mirroring Music: Music Generation with Hidden Markov Models
+#
 #!/usr/bin/python
-
-# Compilation using 3 note chains
-# CS51 Final Project 2012
-# AN, LS, and JM
+#
+# Compilation using order 3 pitch Markov chains and order 2 duration 
+# Markov chains
+#
+####################### COMPILATION_FINAL.PY #########################
 
 from music21 import *
 
-# Import from files
+# Import modules from files
 import notearray
 import compare 
 import write_final
 import random
 import compare3
-import diatonichwrite3
 import compare
 import compare_duration
 
@@ -25,9 +29,10 @@ c2 = 0
 co = 0
 co2 = 0
 k = 0
-p = 0
 cod = 0
-# initialize quarter note as first duration
+
+# Initialize variables for current pitch and duration
+p = 0
 d = 3
 
 # Initialize song
@@ -47,7 +52,7 @@ while i < 60:
         notearray.array(i, notes)
         i += 1
 
-print "array done"
+# print "array done"
 
 # Map both order 2 and order 3 note transitions for all songs
 # Also map duration transitions for all songs
@@ -60,7 +65,7 @@ while j < 60:
         compare_duration.compare(j, countd, notes)
         j += 1
 
-print "compare done"
+# print "compare done"
 
 # Generate probability matrices for order 2, order 3 and durations
 
@@ -72,13 +77,13 @@ while co < 12:
     co += 1
     co2 = 0
 
-print "probability done"
+# print "probability done"
 
 while cod < 4:
     compare_duration.probability(cod, countd)
     cod += 1
 
-print "duration done"
+# print "duration done"
 
 # Write 60 measures of song
 write_final.writer(count2, count3, countd, song, 60)

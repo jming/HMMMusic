@@ -1,11 +1,17 @@
 ####################### WRITE_FINAL.PY #########################
-
+#
+# Alisa Nguyen, Lee Seligman, Joy Ming
+# CS 51 Final Project Spring 2012
+# Mirroring Music: Music Generation with Hidden Markov Models
+#
 # Generates music file based on most probable path
 # of pitches of notes (order 3) and durations of notes (order 2)
 # For 3-note chains, 4 quarter notes per measure
 # Includes hidden state capability, though only one of the three
 # hidden states made here is used in this implementation.
 # Only writes songs in the major or harmonic minor modes
+#
+####################### WRITE_FINAL.PY #########################
 
 import random
 import music21
@@ -33,16 +39,16 @@ hiddens = {'h1': {'h1': 1.0, 'h2': 0.0, 'h3': 0.0},
 # Function writes first measure, followed by all others
 def writer(countmatrix2, countmatrix3, countd, songstream, num_measures):
     global d
-    print "writer started"
+    #print "writer started"
     
     # Write first measure
     writefirst(countmatrix2, countmatrix3, countd, songstream)
-    print "writefirst complete"
+    #print "writefirst complete"
     
     # Write as many other measures as desired
     for i in range(num_measures-1):
-        print "write"
-        print i
+        #print "write"
+        #print i
         write(countmatrix2, countmatrix3, countd, songstream)
 
 
@@ -61,8 +67,8 @@ def pickanote(countmatrices, order):
     # while loop to ensure that all notes are in the same key and mode
     while looper:
         
-        print "while looper"
-        print p1
+        #print "while looper"
+        #print p1
         # Make random number between 0 and 1
         r = random.random()
         
@@ -107,8 +113,8 @@ def pickanote(countmatrices, order):
                 p1 = 11
                 modemaker(p1)
             
-            print "p1 after first section of ifs/elses"
-            print p1
+            #print "p1 after first section of ifs/elses"
+            #print p1
             
             # Checks for ugly note intervals
             if holdp1 == 0 and (p1 == 11 or p1 == 10):
@@ -139,9 +145,9 @@ def pickanote(countmatrices, order):
                 looper = False
             else:
                 p1 = holdp1
-            print "end of while looper"
-            print p1
-            print looper
+            #print "end of while looper"
+            #print p1
+            #print looper
                 
 
         # Use order 3 transition probabilities to find a third note given two.
@@ -423,7 +429,7 @@ def writepitch(msr,counts, counts2, countd):
     
 
 def write(countm2, countm, countd, songs):
-    print "write start"
+    #print "write start"
     global d
   # Position in measure
     l = 0
@@ -438,16 +444,20 @@ def write(countm2, countm, countd, songs):
         #write measure to song
     songs.append(m)
 
+    
+# Pick a duration based on probability matrix for duration
 def pickd(countd):
-    print "pickd"
+    #print "pickd"
     global d
-    # Pick a duration based on probability matrix for duration
+    
     r2 = random.random()
         # print r
-      #'32nd','16th', 'eighth', 'quarter', 'half', 'whole'
       
+    # Limits production of 16th and half notes for aesthetics
     if r2 <= countd[d][0]:
-        d = 0
+        r3 = random.randint(0,3)
+        if r3 == 0:
+            d = 0
             #d = '16th'
     elif r2 > countd[d][0] and r2 <= countd[d][1]:
         d = 1
@@ -460,8 +470,7 @@ def pickd(countd):
         if r3 == 0:
             d = 3
         else:
-            d = 0
-        #    pickd(countd)
+            pickd(countd)
             #d = 'half'
     else:
         d = 4

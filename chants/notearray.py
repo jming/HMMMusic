@@ -1,7 +1,13 @@
-####################### ARRAY.PY #########################
-
+####################### ARRAY.PY ############################
+#
+# Alisa Nguyen, Lee Seligman, Joy Ming
+# CS 51 Final Project Spring 2012
+# Mirroring Music: Music Generation with Hidden Markov Models
+#
 # Associative array of all pitches in each midi
 # Works for all files except 35.mid (excluded)
+#
+####################### ARRAY.PY ############################
 
 import music21
 

@@ -1,10 +1,16 @@
 ####################### DIATONICHWRITE3.PY #########################
-
+#
+# Alisa Nguyen, Lee Seligman, Joy Ming
+# CS 51 Final Project Spring 2012
+# Mirroring Music: Music Generation with Hidden Markov Models
+#
 # Generates music file based on most probable path
 # For 3-note chains, 4 quarter notes per measure
 # Includes hidden state capability, though only one of the three
 # hidden states made here is used in this implementation.
 # Only writes songs in the major or harmonic minor modes
+#
+####################### DIATONICHWRITE3.PY #########################
 
 import random
 import music21

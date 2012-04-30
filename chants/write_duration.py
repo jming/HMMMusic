@@ -1,11 +1,18 @@
-####################### WRITE.PY #########################
-
-# Generates music file based on most probable path
+####################### WRITE_DURATION.PY ############################
+#
+# Alisa Nguyen, Lee Seligman, Joy Ming
+# CS 51 Final Project Spring 2012
+# Mirroring Music: Music Generation with Hidden Markov Models
+#
+# Generates music file based on most probable path for duration
 # Current implementation works for order of 2
+#
+####################### WRITE_DURATION.PY ############################
 
 import random
 import music21
 
+# Arrays for list of all possible notes and durations
 noteList = ['C','C#','D','E-','E','F','F#', 'G','G#','A','B-','B']
 dList = ['32nd', '16th', 'eighth', 'quarter', 'half', 'whole']
 

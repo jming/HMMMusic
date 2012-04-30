@@ -1,9 +1,14 @@
 ####################### COMPILATION3.PY #########################
-
+#
+# Alisa Nguyen, Lee Seligman, Joy Ming
+# CS 51 Final Project Spring 2012
+# Mirroring Music: Music Generation with Hidden Markov Models
+#
 #!/usr/bin/python
-
-# Compilation using 3 note chains
-# CS51 Final Project 2012
+#
+# Compilation using 3 note pitch chains
+# 
+####################### COMPILATION3.PY #########################
 
 from music21 import *
 
@@ -24,10 +29,8 @@ co = 0
 co2 = 0
 k = 0
 
-
 # Initialize song
 song = stream.Part()
-
 
 # Initialize notes and count
 notes = {}
